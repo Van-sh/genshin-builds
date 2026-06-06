@@ -1,0 +1,27 @@
+[project]
+name = "genshin-builds"
+version = "0.0.1"
+description = "This is a CLI that aims to scrape [Genshin Impact Helper Team's Character Builds](https://docs.google.com/spreadsheets/d/1gNxZ2xab1J6o1TuNVWMeLOZ7TPOqrsf3SshP5DLvKzI/htmlview#) in hopes of escaping the horrible UX of a spreadsheet"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "beautifulsoup4>=4.14.3",
+    "niquests>=3.19.0",
+    "types-beautifulsoup4>=4.12.0.20250516",
+]
+
+[dependency-groups]
+dev = [
+    "poethepoet>=0.46.0",
+]
+test = [
+    "unittest-parallel>=1.8.2",
+]
+
+[tool.poe.tasks]
+"setup:files" = "uv run setup_local_files.py"
+
+[tool.uv.workspace]
+members = [
+    "test",
+]
