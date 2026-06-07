@@ -45,7 +45,7 @@ If you are looking to make a PR, make sure you have made an issue first!
 2. Install dependencies including the test group which installs unittest-parallel for running the tests concurrently
 
    ```sh
-   uv sync --group test
+   uv sync
    ```
 
 3. Get local copies of the build sheet's html

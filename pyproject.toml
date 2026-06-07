@@ -13,6 +13,7 @@ dependencies = [
 [dependency-groups]
 dev = [
     "poethepoet>=0.46.0",
+    "unittest-parallel>=1.8.2",
 ]
 test = [
     "unittest-parallel>=1.8.2",
@@ -20,8 +21,4 @@ test = [
 
 [tool.poe.tasks]
 "setup:files" = "uv run setup_local_files.py"
-
-[tool.uv.workspace]
-members = [
-    "test",
-]
+test = "uv run unittest-parallel --level=class --thread -t . -s ./tests/ -v"
