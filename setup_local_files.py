@@ -3,7 +3,7 @@ from threading import Thread
 
 import niquests
 
-from main import ELEMENT_IDS, BASE_URL
+from constants import BASE_URL, ELEMENT_IDS
 
 local_dir = Path("local")
 

@@ -28,6 +28,15 @@ in hopes of escaping the horrible UX of a spreadsheet
    uv sync
    ```
 
+3. Run `main.py`
+   > [!CAUTION]
+   >
+   > Currently only prints hello world
+
+   ```sh
+   uv run main.py
+   ```
+
 ## Contributing
 >
 > [!WARNING]
@@ -52,4 +61,10 @@ If you are looking to make a PR, make sure you have made an issue first!
 
    ```sh
    uv run poe setup:files
+   ```
+
+4. Running Tests
+
+   ```sh
+   uv run poe test
    ```
