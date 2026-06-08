@@ -1,13 +1,15 @@
 import re
+
 from bs4 import Tag
 
 
-def is_character_5_star(img: Tag):
-    return img.find_next(string="5 STAR") is None
+def is_character_5_star(character_img_tag: Tag):
+    # There is a row placed as a header for when 5 star characters start
+    return character_img_tag.find_next(string="5 STAR") is None
 
 
-def get_character_name(img: Tag):
-    cell = img.find_parent("td")
+def get_character_name(character_img_tag: Tag):
+    cell = character_img_tag.find_parent("td")
     if not isinstance(cell, Tag):
         raise ValueError("Image wasn't in a tag")
 
