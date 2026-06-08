@@ -13,7 +13,6 @@ dependencies = [
 [dependency-groups]
 dev = [
     "poethepoet>=0.46.0",
-    "unittest-parallel>=1.8.2",
 ]
 test = [
     "unittest-parallel>=1.8.2",

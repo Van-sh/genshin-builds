@@ -108,7 +108,6 @@ dependencies = [
 [package.dev-dependencies]
 dev = [
     { name = "poethepoet" },
-    { name = "unittest-parallel" },
 ]
 test = [
     { name = "unittest-parallel" },
@@ -122,10 +121,7 @@ requires-dist = [
 ]
 
 [package.metadata.requires-dev]
-dev = [
-    { name = "poethepoet", specifier = ">=0.46.0" },
-    { name = "unittest-parallel", specifier = ">=1.8.2" },
-]
+dev = [{ name = "poethepoet", specifier = ">=0.46.0" }]
 test = [{ name = "unittest-parallel", specifier = ">=1.8.2" }]
 
 [[package]]
