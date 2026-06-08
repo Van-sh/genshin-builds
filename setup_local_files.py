@@ -25,11 +25,13 @@ def main():
 def make_element_file(element: str):
     element_path = local_dir / f"{element}.html"
 
+    print(f"{element}: fetching spreadsheet")
     page = niquests.get(BASE_URL + ELEMENT_IDS[element]).text
     if page is None:
         raise Exception(f"Failed to fetch {element} page")
     with open(element_path, "w") as f:
         f.write(page)
+    print(f"{element}: file written successfully")
 
 
 if __name__ == "__main__":
