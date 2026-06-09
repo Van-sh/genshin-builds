@@ -35,3 +35,21 @@ def get_character_name(character_img_tag: Tag):
                 return text.lower()
 
     raise Exception("Failed to extract name")
+
+
+def get_character_tips(character_img_tag: Tag):
+    cell = character_img_tag.find_parent("td")
+    if not isinstance(cell, Tag):
+        raise ValueError("Image wasn't in a tag")
+
+    img_row = cell.find_parent("tr")
+    if not isinstance(img_row, Tag):
+        raise ValueError("Image's cell wasn't in a row")
+
+    cell_rowspan = int(cell.attrs["rowspan"]) or 1
+
+    notes_row = img_row.find_all_next("tr")[cell_rowspan - 1]
+    if not isinstance(notes_row, Tag):
+        raise Exception("expected notes_row wasn't a Tag")
+
+    print(notes_row.find_all("td")[2])
