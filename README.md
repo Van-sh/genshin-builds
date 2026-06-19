@@ -68,3 +68,8 @@ If you are looking to make a PR, make sure you have made an issue first!
    ```sh
    uv run poe test
    ```
+
+> [!IMPORTANT]
+>
+> - This project is not affiliated to HoYoverse
+> - This project is not affiliated to the Genshin Helper Team
