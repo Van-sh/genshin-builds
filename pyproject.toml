@@ -21,7 +21,5 @@ test = "uv run python -m unittest discover -t . -s ./tests/ -v"
 "test:silent" = "uv run python -m unittest discover -t . -s ./tests/"
 
 [tool.ruff.lint]
-extend-select = ["ISC001", "ISC002"]
-
-[tool.ruff.lint.flake8-implicit-str-concat]
-allow-multiline = false
+extend-select = ["ISC001", "ISC002", "I001"]
+flake8-implicit-str-concat = { "allow-multiline" = false }
