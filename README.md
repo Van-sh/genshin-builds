@@ -29,9 +29,6 @@ in hopes of escaping the horrible UX of a spreadsheet
    ```
 
 3. Run `main.py`
-   > [!CAUTION]
-   >
-   > Currently only prints hello world
 
    ```sh
    uv run main.py
