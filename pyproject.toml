@@ -16,9 +16,9 @@ dev = [
 ]
 
 [tool.poe.tasks]
-"setup:files" = "uv run setup_local_files.py"
-test = "uv run python -m unittest discover -t . -s ./tests/ -v"
-"test:silent" = "uv run python -m unittest discover -t . -s ./tests/"
+"setup:files" = "setup_local_files.py"
+test = "python -m unittest discover -t . -s ./tests/ -v"
+"test:silent" = "python -m unittest discover -t . -s ./tests/"
 
 [tool.ruff.lint]
 extend-select = ["ISC001", "ISC002", "I001"]
