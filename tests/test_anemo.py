@@ -4,7 +4,13 @@ from unittest import TestCase
 
 from bs4 import BeautifulSoup, NavigableString, Tag
 
-from scraper import get_character_name, get_character_notes, is_character_5_star
+from scraper import (
+    CharacterBuild,
+    get_character_builds,
+    get_character_name,
+    get_character_notes,
+    is_character_5_star,
+)
 
 _soup: BeautifulSoup
 
@@ -22,7 +28,6 @@ class Sucrose(TestCase):
     def setUpClass(cls):
         name = cast(NavigableString, _soup.find(string="SUCROSE"))
         cls.img = cast(Tag, name.find_next("img"))
-        cls.maxDiff = None
 
     def test_is_5_star(self):
         self.assertFalse(is_character_5_star(self.img))
@@ -48,6 +53,60 @@ class Sucrose(TestCase):
             ),
         )
 
+    def test_get_character_builds(self):
+        self.assertListEqual(
+            get_character_builds(self.img),
+            [
+                CharacterBuild(
+                    "EM SUPPORT",
+                    True,
+                    "\n".join(
+                        (
+                            "1. A Thousand Floating Dreams (5✩)",
+                            "≈ Sunny Morning Sleep-In (5✩)",
+                            "2. Wandering Evenstar (4✩)",
+                            "3. Sacrificial Fragments (4✩)",
+                            "≈ Thrilling Tales of Dragon Slayers (3✩)*",
+                            "4. Hakushin Ring (4✩)*",
+                            "5. Magic Guide (3✩)",
+                            "6. Favonius Codex (4✩)*",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Viridescent Venerer (4)",
+                            "2. Instructor (4)",
+                            "3. +80 EM set (2) +80 EM set (2)",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "Sands - Elemental Mastery",
+                            "Goblet - Elemental Mastery",
+                            "Circlet - Elemental Mastery",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Elemental Mastery",
+                            "2. Energy Recharge",
+                            "3. ATK%",
+                            "4. Crit Rate / DMG",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Skill",
+                            "2. Burst",
+                            "",
+                            "*Sucrose's Talent Levels are not a necessity.",
+                        )
+                    ),
+                    "When utilized as a Viridescent Venerer (4) artifact set holder, make sure you don't immediately swap away after casting Skill/Burst, you need to be on-field when the swirl reaction happens for you to trigger the 4-set effect.",
+                ),
+            ],
+        )
+
 
 class Sayu(TestCase):
     img: Tag
@@ -56,7 +115,6 @@ class Sayu(TestCase):
     def setUpClass(cls):
         name = cast(NavigableString, _soup.find(string="SAYU"))
         cls.img = cast(Tag, name.find_next("img"))
-        cls.maxDiff = None
 
     def test_is_5_star(self):
         self.assertFalse(is_character_5_star(self.img))
@@ -83,6 +141,61 @@ class Sayu(TestCase):
             ),
         )
 
+    def test_get_character_builds(self):
+        self.assertListEqual(
+            get_character_builds(self.img),
+            [
+                CharacterBuild(
+                    "HEAL SUPPORT",
+                    True,
+                    "\n".join(
+                        (
+                            "1. Favonius Greatsword (4✩)",
+                            "2. Wolf's Gravestone (5✩)*",
+                            "3. Katsuragikiri Nagamasa (4✩)",
+                            "4. Skyward Pride (5✩)",
+                            "5. Sacrificial Greatsword (4✩) [R3+]",
+                            "6. Makhaira Aquamarine (4✩)",
+                            "7. Mailed Flower (4✩) [R5]",
+                            "8. Forest Regalia (4✩)*",
+                            "9. Rainslasher (4✩)",
+                            "10. Bloodtainted Greatsword (3✩)",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Viridescent Venerer (4)*",
+                            "2. Noblesse Oblige (4)",
+                            "3. Emblem of Severed Fate (2) +15% Healing Bonus set (2)",
+                            "4. Ocean-Hued Clam (4)*",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "Sands - Energy Recharge / Elemental Mastery",
+                            "Goblet - Elemental Mastery / ATK%",
+                            "Circlet - Healing Bonus / Elemental Mastery",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Energy Recharge",
+                            "2. Elemental Mastery",
+                            "3. ATK%",
+                            "4. Crit Rate**",
+                            "",
+                            "",
+                            "",
+                            "**Crit Rate only for",
+                            "Favonius Greatsword.",
+                        )
+                    ),
+                    "\n".join(("1. Burst", "2. Skill")),
+                    "Use hold Skill then immediately press it to generate more particles.",
+                ),
+            ],
+        )
+
 
 class ShikanoinHeizou(TestCase):
     img: Tag
@@ -91,7 +204,6 @@ class ShikanoinHeizou(TestCase):
     def setUpClass(cls):
         name = cast(NavigableString, _soup.find(string="SHIKANOIN HEIZOU"))
         cls.img = cast(Tag, name.find_next("img"))
-        cls.maxDiff = None
 
     def test_is_5_star(self):
         self.assertFalse(is_character_5_star(self.img))
@@ -132,6 +244,108 @@ class ShikanoinHeizou(TestCase):
             ),
         )
 
+    def test_get_character_builds(self):
+        self.assertListEqual(
+            get_character_builds(self.img),
+            [
+                CharacterBuild(
+                    "ANEMO DPS",
+                    True,
+                    "\n".join(
+                        (
+                            "1. Kagura's Verity (5✩)",
+                            "≈ Skyward Atlas (5✩)",
+                            "2. Lost Prayer to the Sacred Winds (5✩)*",
+                            "≈ Cashflow Supervision (5✩)",
+                            "≈ Tome of the Eternal Flow (5✩)",
+                            "3. Tulaytullah's Remembrance (5✩)",
+                            "≈ Solar Pearl (4✩)",
+                            "≈ Memory of Dust (5✩)",
+                            "≈ The Widsith (4✩)*",
+                            "4. Mappa Mare (4✩)",
+                            "≈ Flowing Purity (4✩)",
+                            "5. Favonius Codex (4✩)*",
+                            "≈ Thrilling Tales of Dragon Slayers (3✩)*",
+                            "≈ Hakushin Ring (4✩)*",
+                            "≈ Prototype Amber (4✩)*",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Viridescent Venerer (4)*",
+                            "2. Golden Troupe (4)",
+                            "3. Golden Troupe (2) / +15% Anemo DMG set (2)",
+                            "4. Desert Pavilion Chronicle (4)",
+                            "≈ +15% Anemo DMG set (2) / Golden Troupe (2) / +18% ATK set (2) / +80 EM set (2) [Choose Two]",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "Sands - ATK%",
+                            "Goblet - Anemo DMG",
+                            "Circlet - Crit Rate / Crit DMG",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Crit Rate / DMG",
+                            "2. ATK%",
+                            "3. Energy Recharge",
+                            "4. Elemental Mastery",
+                        )
+                    ),
+                    "\n".join(("1. Skill", "2. Normal Attack", "3. Burst")),
+                    "",
+                ),
+                CharacterBuild(
+                    "REACTION DPS",
+                    True,
+                    "\n".join(
+                        (
+                            "1. Sunny Morning Sleep-In (5✩)",
+                            "2. A Thousand Floating Dreams (5✩)",
+                            "3. Sacrificial Fragments (4✩)",
+                            "≈ Wandering Evenstar (4✩)",
+                            "4. Mappa Mare (4✩)",
+                            "5. Favonius Codex (4✩)*",
+                            "≈ Thrilling Tales of Dragon Slayers (3✩)*",
+                            "≈ Hakushin Ring (4✩)*",
+                            "≈ Prototype Amber (4✩)*",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Viridescent Venerer (4)",
+                            "2. Noblesse Oblige (4)*",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "Sands - Elemental Mastery",
+                            "Goblet - Elemental Mastery",
+                            "Circlet - Elemental Mastery",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Elemental Mastery",
+                            "2. ATK%",
+                            "3. Energy Recharge",
+                            "4. Crit Rate",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Skill",
+                            "2. Normal Attack",
+                            "3. Burst",
+                        )
+                    ),
+                    "",
+                ),
+            ],
+        )
+
 
 class Faruzan(TestCase):
     img: Tag
@@ -140,7 +354,6 @@ class Faruzan(TestCase):
     def setUpClass(cls):
         name = cast(NavigableString, _soup.find(string="FARUZAN"))
         cls.img = cast(Tag, name.find_next("img"))
-        cls.maxDiff = None
 
     def test_is_5_star(self):
         self.assertFalse(is_character_5_star(self.img))
@@ -171,6 +384,76 @@ class Faruzan(TestCase):
             ),
         )
 
+    def test_get_character_builds(self):
+        self.assertListEqual(
+            get_character_builds(self.img),
+            [
+                CharacterBuild(
+                    "BUFF SUPPORT",
+                    True,
+                    "\n".join(
+                        (
+                            "1. Favonius Warbow (4✩)",
+                            "2. Elegy for the End (5✩)*",
+                            "3. Snare Hook (4✩)",
+                            "4. End of the Line (4✩)",
+                            "5. Fading Twilight (4✩)",
+                            "≈ Sacrificial Bow (4✩)*",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Noblesse Oblige (4)*",
+                            "≈ Scroll of the Hero of Cinder City (4)",
+                            "2. Viridescent Venerer (4)*",
+                            "3. Emblem of Severed Fate (4)*",
+                            "4. Golden Troupe (4)*",
+                            "≈ Tenacity of the Millelith (4)*",
+                            "5. Emblem of Severed Fate (2) / Any (2) / +20% ER set (2)*",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "Sands - Energy Recharge",
+                            "Goblet - Anemo DMG*",
+                            "Circlet - Crit Rate / DMG",
+                            "",
+                            "*Due to Faruzan's high Energy Recharge requirements pre-C6, it is acceptable to disregard running an Anemo goblet in favor of a goblet which provides more ER. A Crit Rate circlet should still be taken to ensure Favonius procs.",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Energy Recharge",
+                            "2. Crit Rate*",
+                            "3. Crit DMG",
+                            "4. ATK%",
+                            "",
+                            "*Only assumes higher priority than Crit DMG when using Favonius Warbow",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Burst",
+                            "2. Skill",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "Regarding Optimal Rotations",
+                            "",
+                            "For funneling particles to Faruzan:",
+                            "Skill --> Charged Shot --> Burst",
+                            "",
+                            "For funneling particles to other units:",
+                            "Skill --> Burst --> Charged Shot",
+                            "",
+                            "At C6 bear in mind the Charged shot portion of the rotation no longer becomes necessary since your burst will start activating the Pressurized Collapses instead.",
+                        )
+                    ),
+                ),
+            ],
+        )
+
 
 class Lynette(TestCase):
     img: Tag
@@ -179,7 +462,6 @@ class Lynette(TestCase):
     def setUpClass(cls):
         name = cast(NavigableString, _soup.find(string="LYNETTE"))
         cls.img = cast(Tag, name.find_next("img"))
-        cls.maxDiff = None
 
     def test_is_5_star(self):
         self.assertFalse(is_character_5_star(self.img))
@@ -206,6 +488,56 @@ class Lynette(TestCase):
             ),
         )
 
+    def test_get_character_builds(self):
+        self.assertListEqual(
+            get_character_builds(self.img),
+            [
+                CharacterBuild(
+                    "OFF-FIELD DPS",
+                    True,
+                    "\n".join(
+                        (
+                            "1. Favonius Sword (4✩)",
+                            "2. Fleuve Cendre Ferryman (4✩)",
+                            "≈ Sacrificial Sword (4✩)*",
+                            "≈ Amenoma Kageuchi (4✩)",
+                            "≈ Skyward Blade (5✩)",
+                            "3. Freedom-Sworn (5✩)*",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Viridescent Venerer (4)",
+                            "2. Emblem of Severed Fate (4)*",
+                            "3. Noblesse Oblige (4)*",
+                            "4. +15% Anemo DMG set (2) / +20% ER set (2) / Noblesse Oblige (2) / +18% ATK set (2) [Choose Two]",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "Sands - Energy Recharge / ATK%",
+                            "Goblet - Anemo DMG",
+                            "Circlet - Crit Rate / DMG",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Energy Recharge*",
+                            "2. Crit Rate**",
+                            "3. Crit DMG",
+                            "4. ATK%",
+                            "",
+                            "*Prioritize Energy Recharge until you meet the requirement.",
+                            "",
+                            "**Only assumes higher priority than Crit DMG when using Favonius Sword",
+                        )
+                    ),
+                    "\n".join(("1. Burst", "2. Skill")),
+                    "",
+                ),
+            ],
+        )
+
 
 class LanYan(TestCase):
     img: Tag
@@ -214,7 +546,6 @@ class LanYan(TestCase):
     def setUpClass(cls):
         name = cast(NavigableString, _soup.find(string="LAN YAN"))
         cls.img = cast(Tag, name.find_next("img"))
-        cls.maxDiff = None
 
     def test_is_5_star(self):
         self.assertFalse(is_character_5_star(self.img))
@@ -239,6 +570,100 @@ class LanYan(TestCase):
             ),
         )
 
+    def test_get_character_builds(self):
+        self.assertListEqual(
+            get_character_builds(self.img),
+            [
+                CharacterBuild(
+                    "SHIELD & BUFF SUPPORT",
+                    True,
+                    "\n".join(
+                        (
+                            "1. Angelos' Heptades (5✩)",
+                            "2. Starcaller's Watch (5✩)",
+                            "3. Thrilling Tales of Dragon Slayers (3✩)",
+                            "4. Favonius Codex (4✩)",
+                            "5. Crane's Echoing Call (5✩)",
+                            "6. Hakushin Ring (4✩)*",
+                            "7. Prototype Amber (4✩)",
+                        )
+                    ),
+                    "1. Viridescent Venerer (4)",
+                    "\n".join(
+                        (
+                            "Sands - ATK% / Energy Recharge",
+                            "Goblet - ATK%",
+                            "Circlet - ATK% / Crit Rate*",
+                            "",
+                            "*Crit Rate only if using Favonius Codex",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Energy Recharge",
+                            "2. ATK%",
+                            "3. Elemental Mastery",
+                            "4. Crit Rate*",
+                            "",
+                            "*Crit Rate only if using Favonius Codex",
+                        )
+                    ),
+                    "\n".join(("1. Skill", "2. Burst")),
+                    "\n".join(
+                        (
+                            "Lan Yan's shield can undergo Elemental Absorption, meaning that her shield can absorb PHEC (Pyro/Hydro/Electro/Cryo) and become more resistant to the element it has absorbed.",
+                            "",
+                            "Lan Yan has to make contact with an enemy upon skill cast for the absorption to take place.",
+                        )
+                    ),
+                ),
+                CharacterBuild(
+                    "DRIVER",
+                    False,
+                    "\n".join(
+                        (
+                            "1. Starcaller's Watch (5✩)",
+                            "2. Sacrificial Fragments (4✩)",
+                            "≈ Wandering Evenstar (4✩)",
+                            "3. Angelos' Heptades (5✩)",
+                            "4. Thrilling Tales of Dragon Slayers (3✩)",
+                            "5. Favonius Codex (4✩)",
+                            "6. Crane's Echoing Call (5✩)",
+                            "7. Hakushin Ring (4✩)*",
+                        )
+                    ),
+                    "1. Viridescent Venerer (4)",
+                    "\n".join(
+                        (
+                            "Sands - Elemental Mastery / ATK% / Energy Recharge",
+                            "Goblet - Elemental Mastery / ATK%",
+                            "Circlet - Elemental Mastery / ATK% / Crit Rate*",
+                            "",
+                            "*Crit Rate only if using Favonius Codex",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Energy Recharge",
+                            "2. ATK%",
+                            "3. Elemental Mastery",
+                            "4. Crit Rate*",
+                            "",
+                            "*Crit Rate only if using Favonius Codex",
+                        )
+                    ),
+                    "\n".join(("1. Skill", "2. Burst")),
+                    "\n".join(
+                        (
+                            "Lan Yan's shield can undergo Elemental Absorption, meaning that her shield can absorb PHEC (Pyro/Hydro/Electro/Cryo) and become more resistant to the element it has absorbed.",
+                            "",
+                            "Lan Yan has to make contact with an enemy upon skill cast for the absorption to take place.",
+                        )
+                    ),
+                ),
+            ],
+        )
+
 
 class Ifa(TestCase):
     img: Tag
@@ -247,7 +672,6 @@ class Ifa(TestCase):
     def setUpClass(cls):
         name = cast(NavigableString, _soup.find(string="IFA"))
         cls.img = cast(Tag, name.find_next("img"))
-        cls.maxDiff = None
 
     def test_is_5_star(self):
         self.assertFalse(is_character_5_star(self.img))
@@ -282,6 +706,101 @@ class Ifa(TestCase):
             ),
         )
 
+    def test_get_character_builds(self):
+        self.assertListEqual(
+            get_character_builds(self.img),
+            [
+                CharacterBuild(
+                    "REACTION DPS",
+                    False,
+                    "\n".join(
+                        (
+                            "1. Sunny Morning Sleep-In (5✩)",
+                            "≈ Starcaller's Watch (5✩)",
+                            "2. A Thousand Floating Dreams (5✩)",
+                            "3. Wandering Evenstar (4✩)",
+                            "4. Sacrificial Fragments (4✩)*",
+                            "≈ Mappa Mare (4✩) [R5]",
+                            "5. Hakushin Ring (4✩) [R5]",
+                            "6. Thrilling Tales of Dragon Slayers (3✩)*",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Viridescent Venerer (4)",
+                            "2. Obsidian Codex (4)",
+                            "3. Scroll of the Hero of Cinder City (4)",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "Sands - Elemental Mastery / Energy Recharge",
+                            "Goblet - Elemental Mastery",
+                            "Circlet - Elemental Mastery",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Energy Recharge*",
+                            "2. Elemental Mastery",
+                            "3. ATK%",
+                            "4. Crit Rate / DMG",
+                            "",
+                            "*Prioritize until requirements are met",
+                        )
+                    ),
+                    "\n".join(("1. Skill", "2. Burst")),
+                    "",
+                ),
+                CharacterBuild(
+                    "ANEMO DPS",
+                    True,
+                    "\n".join(
+                        (
+                            "1. Tulaytullah's Remembrance (5✩)",
+                            "2. Vivid Notions (5✩)",
+                            "3. Skyward Atlas (5✩)",
+                            "≈ Surf's Up! (5✩)",
+                            "4. Tome of the Eternal Flow (5✩)",
+                            "≈ A Thousand Floating Dreams (5✩)",
+                            "≈ Kagura's Verity (5✩)",
+                            "≈ Lost Prayer to the Sacred Winds (5✩)",
+                            "≈ Cashflow Supervision (5✩)*",
+                            "5. Flowing Purity (4✩)",
+                            "≈ Sunny Morning Sleep-In (5✩)",
+                            "≈ Mappa Mare (4✩) [R5]",
+                            "≈ The Widsith (4✩)*",
+                            "≈ Memory of Dust (5✩)",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Obsidian Codex (4)",
+                            "2. Viridescent Venerer (4)*",
+                            "3. Scroll of the Hero of Cinder City (4)",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "Sands - ATK%",
+                            "Goblet - Anemo DMG",
+                            "Circlet - Crit Rate / DMG",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Crit Rate / DMG",
+                            "2. ATK%",
+                            "3. Elemental Mastery",
+                            "4. Energy Recharge",
+                        )
+                    ),
+                    "\n".join(("1. Skill", "2. Burst")),
+                    "Ifa's healing as an Anemo DPS by itself is generally not enough to fulfill Furina's Fanfare, so it's recommended to pair him with another healer, most notably being Sayu.",
+                ),
+            ],
+        )
+
 
 class Jahoda(TestCase):
     img: Tag
@@ -290,7 +809,6 @@ class Jahoda(TestCase):
     def setUpClass(cls):
         name = cast(NavigableString, _soup.find(string="JAHODA"))
         cls.img = cast(Tag, name.find_next("img"))
-        cls.maxDiff = None
 
     def test_is_5_star(self):
         self.assertFalse(is_character_5_star(self.img))
@@ -313,6 +831,67 @@ class Jahoda(TestCase):
             ),
         )
 
+    def test_get_character_builds(self):
+        self.assertListEqual(
+            get_character_builds(self.img),
+            [
+                CharacterBuild(
+                    "OFF-FIELD REACTION DPS & HEAL SUPPORT",
+                    True,
+                    "\n".join(
+                        (
+                            "1. Favonius Warbow (4✩)",
+                            "2. Elegy for the End (5✩)",
+                            "3. Rainbow Serpent's Rain Bow (4✩) [R5]",
+                            "4. Snare Hook (4✩)",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Viridescent Venerer (4)*",
+                            "2. Silken Moon's Serenade (4)",
+                            "",
+                            "Conditional (see notes):",
+                            "Deepwood Memories (4)*",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "Sands - Energy Recharge / ATK%",
+                            "Goblet - ATK%",
+                            "Circlet - Healing Bonus / ATK% / Crit Rate*",
+                            "",
+                            "*Crit Rate only if using Favonius Warbow",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Energy Recharge*",
+                            "2. ATK%",
+                            "3. Crit Rate**",
+                            "4. Elemental Mastery",
+                            "",
+                            "*Prioritize until requirements are met",
+                            "",
+                            "**Crit Rate only if using Favonius Warbow",
+                        )
+                    ),
+                    "\n".join(("1. Burst", "2. Skill")),
+                    "\n".join(
+                        (
+                            "Jahoda heavily favors having Moonsign: Ascendant Gleam.",
+                            "",
+                            "Her Skill and Burst Infusion priority is Pyro>Hydro>Electro>Cryo.",
+                            "",
+                            "If the active character has 70% HP or more, Jahoda's Burst will also heal the character with the lowest HP.",
+                            "",
+                            "Jahoda's [C6] will only take effect if the Purr-Loined Treasure Flask is full.",
+                        )
+                    ),
+                ),
+            ],
+        )
+
 
 class Prune(TestCase):
     img: Tag
@@ -321,7 +900,6 @@ class Prune(TestCase):
     def setUpClass(cls):
         name = cast(NavigableString, _soup.find(string="PRUNE"))
         cls.img = cast(Tag, name.find_next("img"))
-        cls.maxDiff = None
 
     def test_is_5_star(self):
         self.assertFalse(is_character_5_star(self.img))
@@ -349,6 +927,23 @@ class Prune(TestCase):
             ),
         )
 
+    # def test_get_character_builds(self):
+    #     self.assertListEqual(
+    #         get_character_builds(self.img),
+    #         [
+    #             CharacterBuild(
+    #                 "",
+    #                 True,
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #             ),
+    #         ],
+    #     )
+
 
 class Traveler(TestCase):
     img: Tag
@@ -357,7 +952,6 @@ class Traveler(TestCase):
     def setUpClass(cls):
         name = cast(NavigableString, _soup.find(string="TRAVELER"))
         cls.img = cast(Tag, name.find_next("img"))
-        cls.maxDiff = None
 
     def test_is_5_star(self):
         self.assertTrue(is_character_5_star(self.img))
@@ -383,6 +977,23 @@ class Traveler(TestCase):
             ),
         )
 
+    # def test_get_character_builds(self):
+    #     self.assertListEqual(
+    #         get_character_builds(self.img),
+    #         [
+    #             CharacterBuild(
+    #                 "",
+    #                 True,
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #             ),
+    #         ],
+    #     )
+
 
 class Jean(TestCase):
     img: Tag
@@ -391,7 +1002,6 @@ class Jean(TestCase):
     def setUpClass(cls):
         name = cast(NavigableString, _soup.find(string="JEAN"))
         cls.img = cast(Tag, name.find_next("img"))
-        cls.maxDiff = None
 
     def test_is_5_star(self):
         self.assertTrue(is_character_5_star(self.img))
@@ -429,6 +1039,23 @@ class Jean(TestCase):
             ),
         )
 
+    # def test_get_character_builds(self):
+    #     self.assertListEqual(
+    #         get_character_builds(self.img),
+    #         [
+    #             CharacterBuild(
+    #                 "",
+    #                 True,
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #             ),
+    #         ],
+    #     )
+
 
 class Venti(TestCase):
     img: Tag
@@ -437,7 +1064,6 @@ class Venti(TestCase):
     def setUpClass(cls):
         name = cast(NavigableString, _soup.find(string="VENTI"))
         cls.img = cast(Tag, name.find_next("img"))
-        cls.maxDiff = None
 
     def test_is_5_star(self):
         self.assertTrue(is_character_5_star(self.img))
@@ -479,6 +1105,23 @@ class Venti(TestCase):
             ),
         )
 
+    # def test_get_character_builds(self):
+    #     self.assertListEqual(
+    #         get_character_builds(self.img),
+    #         [
+    #             CharacterBuild(
+    #                 "",
+    #                 True,
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #             ),
+    #         ],
+    #     )
+
 
 class Xiao(TestCase):
     img: Tag
@@ -487,7 +1130,6 @@ class Xiao(TestCase):
     def setUpClass(cls):
         name = cast(NavigableString, _soup.find(string="XIAO"))
         cls.img = cast(Tag, name.find_next("img"))
-        cls.maxDiff = None
 
     def test_is_5_star(self):
         self.assertTrue(is_character_5_star(self.img))
@@ -523,6 +1165,23 @@ class Xiao(TestCase):
             ),
         )
 
+    # def test_get_character_builds(self):
+    #     self.assertListEqual(
+    #         get_character_builds(self.img),
+    #         [
+    #             CharacterBuild(
+    #                 "",
+    #                 True,
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #             ),
+    #         ],
+    #     )
+
 
 class KaedeharaKazuha(TestCase):
     img: Tag
@@ -531,7 +1190,6 @@ class KaedeharaKazuha(TestCase):
     def setUpClass(cls):
         name = cast(NavigableString, _soup.find(string="KAEDEHARA KAZUHA"))
         cls.img = cast(Tag, name.find_next("img"))
-        cls.maxDiff = None
 
     def test_is_5_star(self):
         self.assertTrue(is_character_5_star(self.img))
@@ -559,6 +1217,23 @@ class KaedeharaKazuha(TestCase):
             ),
         )
 
+    # def test_get_character_builds(self):
+    #     self.assertListEqual(
+    #         get_character_builds(self.img),
+    #         [
+    #             CharacterBuild(
+    #                 "",
+    #                 True,
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #             ),
+    #         ],
+    #     )
+
 
 class Wanderer(TestCase):
     img: Tag
@@ -567,7 +1242,6 @@ class Wanderer(TestCase):
     def setUpClass(cls):
         name = cast(NavigableString, _soup.find(string="WANDERER"))
         cls.img = cast(Tag, name.find_next("img"))
-        cls.maxDiff = None
 
     def test_is_5_star(self):
         self.assertTrue(is_character_5_star(self.img))
@@ -599,6 +1273,23 @@ class Wanderer(TestCase):
             ),
         )
 
+    # def test_get_character_builds(self):
+    #     self.assertListEqual(
+    #         get_character_builds(self.img),
+    #         [
+    #             CharacterBuild(
+    #                 "",
+    #                 True,
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #             ),
+    #         ],
+    #     )
+
 
 class Xianyun(TestCase):
     img: Tag
@@ -607,7 +1298,6 @@ class Xianyun(TestCase):
     def setUpClass(cls):
         name = cast(NavigableString, _soup.find(string="XIANYUN"))
         cls.img = cast(Tag, name.find_next("img"))
-        cls.maxDiff = None
 
     def test_is_5_star(self):
         self.assertTrue(is_character_5_star(self.img))
@@ -639,6 +1329,23 @@ class Xianyun(TestCase):
             ),
         )
 
+    # def test_get_character_builds(self):
+    #     self.assertListEqual(
+    #         get_character_builds(self.img),
+    #         [
+    #             CharacterBuild(
+    #                 "",
+    #                 True,
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #             ),
+    #         ],
+    #     )
+
 
 class Chasca(TestCase):
     img: Tag
@@ -647,7 +1354,6 @@ class Chasca(TestCase):
     def setUpClass(cls):
         name = cast(NavigableString, _soup.find(string="CHASCA"))
         cls.img = cast(Tag, name.find_next("img"))
-        cls.maxDiff = None
 
     def test_is_5_star(self):
         self.assertTrue(is_character_5_star(self.img))
@@ -679,6 +1385,79 @@ class Chasca(TestCase):
             ),
         )
 
+    def test_get_character_builds(self):
+        self.assertListEqual(
+            get_character_builds(self.img),
+            [
+                CharacterBuild(
+                    "DPS",
+                    True,
+                    "\n".join(
+                        (
+                            "1. Astral Vulture's Crimson Plumage (5✩)",
+                            "2. Aqua Simulacra (5✩)",
+                            "≈ The First Great Magic (5✩)",
+                            "3. Thundering Pulse (5✩)",
+                            "4. Skyward Harp (5✩)",
+                            "5. Amos' Bow (5✩)*",
+                            "≈ Polar Star (5✩)*",
+                            "≈ Scion of the Blazing Sun (4✩)*",
+                            "6. Chain Breaker [R5] (4✩)",
+                            "≈ Song of Stillness [R5] (4✩)*",
+                            "≈ Flower-Wreathed Feathers (4✩)*",
+                            "≈ Hamayumi [R5] (4✩)",
+                            "7. Range Gauge (4✩)*",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Obsidian Codex (4)",
+                            "2. Viridescent Venerer (4)",
+                            "",
+                            "Conditional (See Notes)",
+                            "Marechaussee Hunter (4)*",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "Sands - ATK%",
+                            "Goblet - ATK%*",
+                            "Circlet - Crit Rate / DMG",
+                            "",
+                            "**ATK% is the best generalist goblet pick. If Chasca is played in teams which focus on one PHEC damage type however, the respective DMG% Goblet can be competitive",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Crit Rate / DMG",
+                            "2. ATK%",
+                            "3. Elemental Mastery",
+                            "4. Energy Recharge*",
+                            "",
+                            "**Chasca generally has high Energy Recharge Requirements. Building Energy Recharge to burst every rotation is only feasible in energy rich teams or at [C4+]",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Skill",
+                            "2. Burst",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "Chasca's bullets follow the 'last in first out' rule, meaning the last loaded bullet hits first, while the anemo bullet in slot 1 hits last.",
+                            "",
+                            "Chasca ideally needs 3 different types of PHEC (Pyro/Hydro/Electro/Cryo) to maximize the conversion rate and Damage Bonus from her passive Bullet Trick.",
+                            "",
+                            "Ideal Combo*: 4[CA6]",
+                            "",
+                            "**Number after 'CA' refers to the number of Bullets loaded",
+                        )
+                    ),
+                )
+            ],
+        )
+
 
 class YumemizukiMizuki(TestCase):
     img: Tag
@@ -687,7 +1466,6 @@ class YumemizukiMizuki(TestCase):
     def setUpClass(cls):
         name = cast(NavigableString, _soup.find(string="YUMEMIZUKI MIZUKI"))
         cls.img = cast(Tag, name.find_next("img"))
-        cls.maxDiff = None
 
     def test_is_5_star(self):
         self.assertTrue(is_character_5_star(self.img))
@@ -711,6 +1489,23 @@ class YumemizukiMizuki(TestCase):
             ),
         )
 
+    # def test_get_character_builds(self):
+    #     self.assertListEqual(
+    #         get_character_builds(self.img),
+    #         [
+    #             CharacterBuild(
+    #                 "",
+    #                 True,
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #             ),
+    #         ],
+    #     )
+
 
 class Varka(TestCase):
     img: Tag
@@ -719,7 +1514,6 @@ class Varka(TestCase):
     def setUpClass(cls):
         name = cast(NavigableString, _soup.find(string="VARKA"))
         cls.img = cast(Tag, name.find_next("img"))
-        cls.maxDiff = None
 
     def test_is_5_star(self):
         self.assertTrue(is_character_5_star(self.img))
@@ -747,3 +1541,20 @@ class Varka(TestCase):
                 )
             ),
         )
+
+    # def test_get_character_builds(self):
+    #     self.assertListEqual(
+    #         get_character_builds(self.img),
+    #         [
+    #             CharacterBuild(
+    #                 "",
+    #                 True,
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #                 "\n".join(()),
+    #             ),
+    #         ],
+    #     )
