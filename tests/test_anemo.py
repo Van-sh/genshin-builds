@@ -927,22 +927,70 @@ class Prune(TestCase):
             ),
         )
 
-    # def test_get_character_builds(self):
-    #     self.assertListEqual(
-    #         get_character_builds(self.img),
-    #         [
-    #             CharacterBuild(
-    #                 "",
-    #                 True,
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #             ),
-    #         ],
-    #     )
+    def test_get_character_builds(self):
+        self.assertListEqual(
+            get_character_builds(self.img),
+            [
+                CharacterBuild(
+                    "BUFF SUPPORT",
+                    True,
+                    "\n".join(
+                        (
+                            "1. Favonius Codex (4✩)*",
+                            "2. Angelos' Heptades (5✩)",
+                            "≈ Crane's Echoing Call (5✩)",
+                            "3. Skyward Atlas (5✩)",
+                            "≈ Memory of Dust (5✩)",
+                            "4. Oathsworn Eye (4✩) [R5]",
+                            "5. Flowing Purity (4✩)",
+                            "6. Thrilling Tales of Dragon Slayers (3✩)* [R5]",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Viridescent Venerer (4)*",
+                            "≈ Celestial Gift (4)*",
+                            "2. Noblesse Oblige (4)",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "Sands - Energy Recharge / ATK%",
+                            "Goblet - ATK%",
+                            "Circlet - ATK% / Crit Rate**",
+                            "",
+                            "**Crit Rate is only necessary if Prune is using Favonius Codex",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Energy Recharge*",
+                            "2. ATK%",
+                            "3. Crit Rate**",
+                            "",
+                            "*Prioritize until requirements are met",
+                            "",
+                            "**Crit Rate is only necessary if Prune is using Favonius Codex",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Burst",
+                            "2. Skill",
+                            "",
+                            "*Talent levels are not a necessity as they do not increase Prune's buffing capabilities.",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "Tolling Rally does not apply to Prune herself.",
+                            "",
+                            "Tolling Rally caps out at 4,000 ATK, usually not feasible to get unless Prune is in a Hexerei team.",
+                        )
+                    ),
+                ),
+            ],
+        )
 
 
 class Traveler(TestCase):
@@ -977,22 +1025,65 @@ class Traveler(TestCase):
             ),
         )
 
-    # def test_get_character_builds(self):
-    #     self.assertListEqual(
-    #         get_character_builds(self.img),
-    #         [
-    #             CharacterBuild(
-    #                 "",
-    #                 True,
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #             ),
-    #         ],
-    #     )
+    def test_get_character_builds(self):
+        self.assertListEqual(
+            get_character_builds(self.img),
+            [
+                CharacterBuild(
+                    "ANEMO DPS",
+                    True,
+                    "\n".join(
+                        (
+                            "1. Freedom-Sworn (5✩)",
+                            "2. Primordial Jade Cutter (5✩)",
+                            "≈ Mistsplitter Reforged (5✩)",
+                            "3. Sacrificial Sword (4✩)*",
+                            "4. Iron Sting (4✩)",
+                            "5. Summit Shaper (5✩)",
+                            "≈ Skyward Blade (5✩)",
+                            "≈ Festering Desire (4✩)",
+                            "6. Aquilla Favonia (5✩)",
+                            "7. Lion's Roar (4✩)",
+                            "≈ Amenoma Kageuchi (4✩) [R1]*",
+                            "≈ Favonius Sword (4✩)*",
+                            "8. Dark Iron Sword (3✩)",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Viridescent Venerer (4)",
+                            "2. +15% Anemo DMG set (2) / +80 EM set (2) / Noblesse Oblige (2) / +18% ATK set (2) [Choose Two]",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "Sands - Elemental Mastery / ATK% / Energy Recharge",
+                            "Goblet - Elemental Mastery / Anemo DMG",
+                            "Circlet - Elemental Mastery / Crit Rate / DMG",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Elemental Mastery",
+                            "2. Energy Recharge",
+                            "3. ATK%",
+                            "4. Crit Rate / DMG",
+                            "",
+                            "**Crit Rate / DMG will have higher priority for a full Crit build",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Skill",
+                            "2. Burst",
+                            "",
+                            "*For an EM-focused build, upgrading Traveler's talent levels isn't a necessity.",
+                        )
+                    ),
+                    "",
+                ),
+            ],
+        )
 
 
 class Jean(TestCase):
@@ -1039,22 +1130,106 @@ class Jean(TestCase):
             ),
         )
 
-    # def test_get_character_builds(self):
-    #     self.assertListEqual(
-    #         get_character_builds(self.img),
-    #         [
-    #             CharacterBuild(
-    #                 "",
-    #                 True,
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #             ),
-    #         ],
-    #     )
+    def test_get_character_builds(self):
+        self.assertListEqual(
+            get_character_builds(self.img),
+            [
+                CharacterBuild(
+                    "HEAL SUPPORT & DAMAGE",
+                    True,
+                    "\n".join(
+                        (
+                            "1. Primordial Jade Cutter (5✩)",
+                            "2. Freedom-Sworn (5✩)",
+                            "3. Mistsplitter Reforged (5✩)",
+                            "≈ Haran Geppaku Futsu (5✩)",
+                            "4. Skyward Blade (5✩)",
+                            "≈ Festering Desire (4✩) [R5]",
+                            "≈ Favonius Sword (4✩)",
+                            "≈ Amenoma Kageuchi (4✩)*",
+                            "5. Summit Shaper (5✩)",
+                            "6. Aquila Favonia (5✩)",
+                            "7. The Flute (4✩)",
+                            "≈ Sapwood Blade (4✩)",
+                            "≈ Lion's Roar (4✩)*",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Viridescent Venerer (4)*",
+                            "2. Noblesse Oblige (4)*",
+                            "3. Ocean-Hued Clam (4)*",
+                            "4. Emblem of Severed Fate (2) / Noblesse Oblige (2) / +15% Anemo DMG set (2) / +18% ATK set (2) [Choose Two]",
+                            "≈ Emblem of Severed Fate (4)",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "Sands - ATK% / Energy Recharge",
+                            "Goblet - Anemo Damage / ATK%*",
+                            "Circlet - Crit Rate / DMG / Healing Bonus*",
+                            "",
+                            "*Check notes",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Energy Recharge*",
+                            "2. Crit Rate = Crit DMG",
+                            "3. ATK%",
+                            "4. Elemental Mastery",
+                            "",
+                            "*Prioritize Energy Recharge until requirement is met",
+                        )
+                    ),
+                    "1. Burst = Skill*",
+                    "",
+                ),
+                CharacterBuild(
+                    "REACTION DPS",
+                    False,
+                    "\n".join(
+                        (
+                            "1. Freedom-Sworn (5✩)",
+                            "2. Xiphos' Moonlight (4✩)",
+                            "3. Iron Sting (4✩)",
+                            "≈ Toukabou Shigure (4✩)",
+                            "4. Favonius Sword (4✩)",
+                            "5. Dark Iron Sword (3✩)",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Viridescent Venerer (4)",
+                            "2. Gilded Dreams (4)",
+                            "3. +80 EM set (2) +80 EM set (2)",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "Sands - Energy Recharge / Elemental Mastery",
+                            "Goblet - Elemental Mastery",
+                            "Circlet - Elemental Mastery",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Energy Recharge *until requirement",
+                            "2. Elemental Mastery",
+                            "3. ATK%",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Burst = Skill*",
+                            "",
+                            "**talents are not large upgrades for Reaction DPS Jean",
+                        )
+                    ),
+                    "",
+                ),
+            ],
+        )
 
 
 class Venti(TestCase):
@@ -1105,22 +1280,131 @@ class Venti(TestCase):
             ),
         )
 
-    # def test_get_character_builds(self):
-    #     self.assertListEqual(
-    #         get_character_builds(self.img),
-    #         [
-    #             CharacterBuild(
-    #                 "",
-    #                 True,
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #             ),
-    #         ],
-    #     )
+    def test_get_character_builds(self):
+        self.assertListEqual(
+            get_character_builds(self.img),
+            [
+                CharacterBuild(
+                    "OFF-FIELD DPS",
+                    True,
+                    "\n".join(
+                        (
+                            "1. The Daybreak Chronicles (5✩)",
+                            "2. Polar Star (5✩)",
+                            "3. Astral Vulture's Crimson Plumage (5✩)",
+                            "4. Hunter's Path (5✩)",
+                            "≈ The First Great Magic (5✩)*",
+                            "≈ Aqua Simulacra (5✩)",
+                            "≈ Skyward Harp (5✩)",
+                            "5. Thundering Pulse (5✩)",
+                            "6. Mouun's Moon (4✩)*",
+                            "≈ Song of Stillness (4✩) [R5]*",
+                            "≈ The Stringless (4✩)",
+                            "≈ Alley Hunter (4✩)",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Viridescent Venerer (4)",
+                            "*Prioritize this set unless someone else holds it",
+                            "",
+                            "2. A Day Carved From Rising Winds (4)",
+                            "3. Noblesse Oblige (4)",
+                            "4. Scroll of the Hero of Cinder City (4)",
+                            "5. Gilded Dreams (4)",
+                            "6. Emblem of Severed Fate (4)",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "Sands - ATK%",
+                            "Goblet - Anemo DMG / ATK%",
+                            "Circlet - Crit Rate / DMG",
+                            "",
+                            "**Elemental Mastery can be used as an alternative Main Stat, however, it is less recommended**",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Crit Rate / DMG",
+                            "2. ATK%",
+                            "3. Elemental Mastery",
+                            "4. Energy Recharge",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Burst",
+                            "2. Skill",
+                            "",
+                            "*For a Reaction-focused build, upgrading Venti's talent levels isn't a necessity.",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "Make sure you don't immediately swap away after casting Burst; you need to be on-field for VV 4-set perk to proc on Swirl first.(E > Q to avoid this issue)",
+                            "",
+                            "You can infuse elements onto Venti's Burst if you walk into it with an elemental aura on you. (e.g. Bennett Burst > Venti Burst > Walk up to infuse Pyro)",
+                            "",
+                            "Check out http://tinyurl.com/ventiburstinfo to see which characters can hit the enemies sucked and ragdolled in Venti's burst.",
+                        )
+                    ),
+                ),
+                CharacterBuild(
+                    "ON-FIELD DPS",
+                    True,
+                    "\n".join(
+                        (
+                            "1. The Daybreak Chronicles (5✩)",
+                            "2. Polar Star (5✩)",
+                            "3. Thundering Pulse (5✩)",
+                            "≈ Hunter's Path (5✩)",
+                            "≈ Skyward Harp (5✩)",
+                            "≈ Aqua Simulacra (5✩)",
+                            "4. Astral Vulture's Crimson Plumage (5✩)*",
+                            "≈ The First Great Magic (5✩)*",
+                            "5. Amos' Bow (5✩)",
+                            "≈ Slingshot (3✩) [R5]",
+                            "≈ Song of Stillness (4✩) [R5]*",
+                            "≈ The Viridescent Hunt (4✩)",
+                            "6. Rust (4✩)*",
+                            "≈ Mouun's Moon (4✩)",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. A Day Carved From Rising Winds (4)",
+                            "2. Desert Pavillion Chronicle (4)*",
+                            "3. Echoes of an Offering (4)*",
+                            "4. Viridescent Venerer (4)*",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "Sands - ATK%",
+                            "Goblet - Anemo DMG",
+                            "Circlet Crit Rate / DMG",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Crit Rate / DMG",
+                            "2. ATK%",
+                            "3. Elemental Mastery",
+                            "4. Energy Recharge",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Normal Attack",
+                            "2. Burst",
+                            "3. Skill",
+                        )
+                    ),
+                    "",
+                ),
+            ],
+        )
 
 
 class Xiao(TestCase):
@@ -1165,22 +1449,88 @@ class Xiao(TestCase):
             ),
         )
 
-    # def test_get_character_builds(self):
-    #     self.assertListEqual(
-    #         get_character_builds(self.img),
-    #         [
-    #             CharacterBuild(
-    #                 "",
-    #                 True,
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #             ),
-    #         ],
-    #     )
+    def test_get_character_builds(self):
+        self.assertListEqual(
+            get_character_builds(self.img),
+            [
+                CharacterBuild(
+                    "DPS",
+                    True,
+                    "\n".join(
+                        (
+                            "1. Fractured Halo (5✩)",
+                            "≈ Staff of Homa (5✩)",
+                            "≈ Primordial Jade Winged-Spear (5✩)",
+                            "≈ Lumidouce Elegy (5✩)",
+                            "≈ Symphonist of Scents (5✩)",
+                            "2. Staff of the Scarlet Sands (5✩)",
+                            "3. Calamity Queller (5✩)*",
+                            "≈ Deathmatch (4✩)",
+                            "≈ Crimson Moon's Semblance (5✩)*",
+                            "≈ Vortex Vanquisher (5✩)*",
+                            "≈ Skyward Spine (5✩)*",
+                            "4. Blackcliff Pole (0 stacks) (4✩)*",
+                            "≈ Tamayuratei no Ohanashi [R5] (4✩)",
+                            "5. Lithic Spear (4✩)*",
+                            "6. Missive Windspear [R5] (4✩)*",
+                            "≈ Prospector's Drill (4✩)*",
+                            "≈ Wavebreaker's Fin (4✩)",
+                            "7. Favonius Lance (4✩)*",
+                            "8. White Tassel (3✩)",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Marechaussee Hunter (4)*",
+                            "≈ Vermillion Hereafter (4)",
+                            "≈ Long Night's Oath (4)*",
+                            "2. Desert Pavilion Chronicle (4)*",
+                            "3. Long Night's Oath (2) and +15% Anemo DMG set (2) / +18% ATK set (2) / Emblem of Severed Fate (2) [Choose One]",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "Sands - ATK%",
+                            "Goblet - Anemo DMG / ATK%*",
+                            "Circlet - Crit Rate / DMG",
+                            "",
+                            "*ATK% Goblets are generally worse than Anemo DMG Goblets, however good substats can make up for the difference",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Energy Recharge until requirement is met",
+                            "2. Crit Rate/DMG",
+                            "3. ATK%",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Normal Attack",
+                            "2. Burst",
+                            "3. Skill",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "Regarding Xiao's Optimal Skill Rotation:",
+                            "Skill -> Skill -> Burst -> Plunge Combo",
+                            "",
+                            "Regarding Xiao's Plunge Combo:",
+                            "Best combo for Xiao when fighting a single target:",
+                            "Normal Attack -> Charged Attack -> High Plunge (no collision possible)",
+                            "",
+                            "Normal Attack -> Charged Attack -> Low Plunge (collision only possible on Low Plunge)",
+                            "",
+                            "High Plunge spam (collision possible on High Plunge)",
+                            "",
+                            "Best combo for Xiao when fighting multiple enemies:",
+                            "High Plunge spam",
+                        )
+                    ),
+                ),
+            ],
+        )
 
 
 class KaedeharaKazuha(TestCase):
@@ -1217,22 +1567,66 @@ class KaedeharaKazuha(TestCase):
             ),
         )
 
-    # def test_get_character_builds(self):
-    #     self.assertListEqual(
-    #         get_character_builds(self.img),
-    #         [
-    #             CharacterBuild(
-    #                 "",
-    #                 True,
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #             ),
-    #         ],
-    #     )
+    def test_get_character_builds(self):
+        self.assertListEqual(
+            get_character_builds(self.img),
+            [
+                CharacterBuild(
+                    "REACTION DPS & BUFF SUPPORT",
+                    True,
+                    "\n".join(
+                        (
+                            "1. Freedom-Sworn (5✩)",
+                            "2. Favonius Sword (4✩)*",
+                            "3. Xiphos' Moonlight (4✩)*",
+                            "4. Sacrificial Sword (4✩)*",
+                            "≈ Fleuve Cendre Ferryman (4✩)",
+                            "≈ Skyward Blade (5✩)",
+                            "5. Iron Sting (4✩)*",
+                            "≈ Toukabou Shigure (4✩)*",
+                            "≈ Skyrider Sword (3✩)",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Viridescent Venerer (4)",
+                            "2. Thundering Fury (4)*",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "Sands - Elemental Mastery / Energy Recharge",
+                            "Goblet - Elemental Mastery",
+                            "Circlet - Elemental Mastery",
+                            "",
+                            "Prioritize Energy Recharge until you meet the requirement.",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Energy Recharge",
+                            "2. Elemental Mastery",
+                            "3. Crit Rate*",
+                            "",
+                            "*Crit Rate substats are only important when running Favonius Sword",
+                            "",
+                            "Prioritize Energy Recharge until you meet the requirement.",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Burst",
+                            "2. Skill = NA*",
+                            "",
+                            "Kazuha generally does not need his talents leveled on an EM build.",
+                            "",
+                            "*Upgrading Kazuha's NA talent increases the damage of his plunge attack after using skill",
+                        )
+                    ),
+                    "The element which is absorbed by Kazuha's elemental burst follows the priority of Pyro > Hydro > Electro > Cryo, and can be absorbed from both the active character and enemies. (i.e. Standing in Bennett 's Elemental Burst will result in Kazuha's Elemental Burst infusing Pyro as Bennett's Elemental Burst applies Pyro to the active character)",
+                ),
+            ],
+        )
 
 
 class Wanderer(TestCase):
@@ -1273,22 +1667,162 @@ class Wanderer(TestCase):
             ),
         )
 
-    # def test_get_character_builds(self):
-    #     self.assertListEqual(
-    #         get_character_builds(self.img),
-    #         [
-    #             CharacterBuild(
-    #                 "",
-    #                 True,
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #             ),
-    #         ],
-    #     )
+    def test_get_character_builds(self):
+        self.assertListEqual(
+            get_character_builds(self.img),
+            [
+                CharacterBuild(
+                    "DPS",
+                    True,
+                    "\n".join(
+                        (
+                            "1. Tulaytullah's Remembrance (5✩)",
+                            "2. Memory of Dust (5✩)*",
+                            "≈ Skyward Atlas (5✩)",
+                            "≈ Lost Prayer to the Sacred Winds (5✩)",
+                            "3. The Widsith (4✩)*",
+                            "≈ Dodoco Tales [R5] (4✩)*",
+                            "4. Kagura's Verity (5✩)",
+                            "≈ Tome of the Eternal Flow (5✩)",
+                            "5. Solar Pearl (4✩)",
+                            "6. Ballad of the Boundless Blue [R5] (4✩)",
+                            "7. Blackcliff Agate (4✩)",
+                            "≈ Eye of Perception (4✩)",
+                            "8. Mappa Mare (4✩)",
+                            "≈ Frostbearer (4✩",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Desert Pavilion Chronicle (4)",
+                            "2. Shimenawa's Reminiscence (4)*",
+                            "3. Echoes of an Offering (4)*",
+                            "4. +15% Anemo DMG Set (2) +15% Anemo DMG Set (2) +18% ATK Set (2) +18% ATK Set (2) [Choose Two]",
+                            "5. Viridescent Venerer (4)*",
+                            "",
+                            "Conditional (See Notes):",
+                            "Blizzard Strayer (4)*",
+                            "Lavawalker (4)*",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "Sands - ATK%",
+                            "Goblet - Anemo DMG",
+                            "Circlet - Crit Rate / DMG",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Crit Rate / DMG",
+                            "2. ATK%",
+                            "3. Flat ATK",
+                            "4. Elemental Mastery",
+                            "5. Energy Recharge",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Normal Attack",
+                            "2. Skill",
+                            "3. Burst",
+                            "",
+                            "**IF WANDERER IS C2, PRIORITIZE BURST OVER SKILL",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "Desert Pavilion and Signature Weapon Rotation: (Q) E CA (N3 repeat)",
+                            "",
+                            "Signature Weapon Rotation (non Desert Pavilion): (Q) E (N3 repeat)",
+                            "",
+                            "Desert Pavilion Rotation: (Q) E CA (N2C repeat)",
+                            "",
+                            "Other Artifact Sets Rotation: (Q) E (N2C repeat)",
+                            "",
+                            "Shimenawa's Reminiscence Rotation: E (N2C repeat) (Q)",
+                            "",
+                            "Swirl Driver Rotation: E (N3C repeat)",
+                        )
+                    ),
+                ),
+                CharacterBuild(
+                    "DPS (WITH EXTERNAL ATK BUFFS)",
+                    True,
+                    "\n".join(
+                        (
+                            "1. Tulaytullah's Remembrance (5✩)",
+                            "2. Lost Prayer to the Sacred Winds (5✩)",
+                            "3. The Widsith (4✩)*",
+                            "4. Kagura's Verity (5✩)",
+                            "≈ Tome of the Eternal Flow (5✩)",
+                            "≈ Skyward Atlas (5✩)",
+                            "≈ Memory of Dust (5✩)*",
+                            "5. Solar Pearl (4✩)",
+                            "≈ Dodoco Tales [R5] (4✩)*",
+                            "6. Ballad of the Boundless Blue [R5] (4✩)",
+                            "7. Blackcliff Agate (4✩)",
+                            "8. Eye of Perception (4✩)",
+                            "9. Mappa Mare (4✩)",
+                            "≈ Frostbearer (4✩)",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Desert Pavilion Chronicle (4)",
+                            "2. Shimenawa's Reminiscence (4)*",
+                            "3. Echoes of an Offering (4)*",
+                            "4. +15% Anemo DMG Set (2) +15% Anemo DMG Set (2) +18% ATK Set (2) +18% ATK Set (2) [Choose Two]",
+                            "5. Viridescent Venerer (4)*",
+                            "",
+                            "Conditional (See Notes):",
+                            "Blizzard Strayer (4)*",
+                            "Lavawalker (4)*",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "Sands - ATK%",
+                            "Goblet - Anemo DMG",
+                            "Circlet - Crit Rate / DMG",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Crit Rate / DMG",
+                            "2. ATK%",
+                            "3. Flat ATK",
+                            "4. Elemental Mastery",
+                            "5. Energy Recharge",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Normal Attack",
+                            "2. Skill",
+                            "3. Burst",
+                            "",
+                            "**IF WANDERER IS C2, PRIORITIZE BURST OVER SKILL",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "Desert Pavilion and Signature Weapon Rotation: (Q) E CA (N3 repeat)",
+                            "",
+                            "Signature Weapon Rotation (non Desert Pavilion): (Q) E (N3 repeat)",
+                            "",
+                            "Desert Pavilion Rotation: (Q) E CA (N2C repeat)",
+                            "",
+                            "Other Artifact Sets Rotation: (Q) E (N2C repeat)",
+                            "",
+                            "Shimenawa's Reminiscence Rotation: E (N2C repeat) (Q)",
+                            "",
+                            "Swirl Driver Rotation: E (N3C repeat)",
+                        )
+                    ),
+                ),
+            ],
+        )
 
 
 class Xianyun(TestCase):
@@ -1329,22 +1863,108 @@ class Xianyun(TestCase):
             ),
         )
 
-    # def test_get_character_builds(self):
-    #     self.assertListEqual(
-    #         get_character_builds(self.img),
-    #         [
-    #             CharacterBuild(
-    #                 "",
-    #                 True,
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #             ),
-    #         ],
-    #     )
+    def test_get_character_builds(self):
+        self.assertListEqual(
+            get_character_builds(self.img),
+            [
+                CharacterBuild(
+                    "HIGH ENERGY REQUIREMENT  BUFF & HEAL SUPPORT",
+                    True,
+                    "\n".join(
+                        (
+                            "1. Crane's Echoing Call (5✩)",
+                            "2. Favonius Codex (4✩)*",
+                            "≈ Oathsworn Eye (4✩)",
+                            "3. Wine and Song (4✩)",
+                            "4. Ballad of the Boundless Blue (4✩)",
+                            "≈ Hakushin Ring (4✩)*",
+                            "≈ Prototype Amber (4✩)* [R3+]",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1.Viridescent Venerer (4)",
+                            "2. Noblesse Oblige (4)*",
+                            "3. Ocean-Hued Clam (4)*",
+                            "≈ Song of Days Past (4)*",
+                            "≈ Scroll of the Hero of Cinder City (4)",
+                            "4. +18% ATK Set (2) + 18% ATK set (2) / Emblem of Severed Fate (2) [Choose One]",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "Sands - ATK% / Energy Recharge",
+                            "Goblet - ATK%",
+                            "Circlet - ATK%",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Energy Recharge",
+                            "2. ATK%",
+                            "3. Flat ATK",
+                            "",
+                            "**Crit Rate**",
+                            "",
+                            "*Prioritize Crit Rate if running Favonius",
+                        )
+                    ),
+                    "1. Burst",
+                    "Most teams will not use all three uses of Xianyun's Skill, since it is too time intensive to do so. A simple E Q is the ideal rotation for most teams.",
+                ),
+                CharacterBuild(
+                    "LOW ENERGY REQUIREMENT  BUFF & HEAL SUPPORT",
+                    True,
+                    "\n".join(
+                        (
+                            "1. Crane's Echoing Call (5✩)",
+                            "2. Skyward Atlas (5✩)",
+                            "≈ Memory of Dust (5✩)",
+                            "3. Cashflow Supervision (5✩)",
+                            "4. Thrilling Tales of Dragon Slayers (3✩)*",
+                            "5. Favonius Codex (4✩)*",
+                            "≈Oathsworn Eye (4✩) [R5]",
+                            "6. Flowing Purity (4✩)",
+                            "7. Wine and Song (4✩)*",
+                            "8. Ballad of the Boundless Blue (4✩)",
+                            "≈ Hakushin Ring (4✩)*",
+                            "9. Frostbearer (4✩)",
+                            "10. Prototype Amber (4✩)*",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1.Viridescent Venerer (4)",
+                            "2. Noblesse Oblige (4)*",
+                            "3. Ocean-Hued Clam (4)*",
+                            "≈ Song of Days Past (4)*",
+                            "≈ Scroll of the Hero of Cinder City (4)",
+                            "4. +18% ATK Set (2) + 18% ATK set (2) / Emblem of Severed Fate (2) [Choose One]",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "Sands - ATK% / Energy Recharge",
+                            "Goblet - ATK%",
+                            "Circlet - ATK%",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Energy Recharge",
+                            "2. ATK%",
+                            "3. Flat ATK",
+                            "",
+                            "**Crit Rate**",
+                            "",
+                            "*Prioritize Crit Rate if running Favonius",
+                        )
+                    ),
+                    "1. Burst",
+                    "Most teams will not use all three uses of Xianyun's Skill, since it is too time intensive to do so. A simple E Q is the ideal rotation for most teams.",
+                ),
+            ],
+        )
 
 
 class Chasca(TestCase):
@@ -1489,22 +2109,53 @@ class YumemizukiMizuki(TestCase):
             ),
         )
 
-    # def test_get_character_builds(self):
-    #     self.assertListEqual(
-    #         get_character_builds(self.img),
-    #         [
-    #             CharacterBuild(
-    #                 "",
-    #                 True,
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #             ),
-    #         ],
-    #     )
+    def test_get_character_builds(self):
+        self.assertListEqual(
+            get_character_builds(self.img),
+            [
+                CharacterBuild(
+                    "REACTION DPS",
+                    True,
+                    "\n".join(
+                        (
+                            "1. Sunny Morning Sleep-In (5✩)",
+                            "2. Starcaller's Watch (5✩)",
+                            "3. A Thousand Floating Dreams (5✩)",
+                            "4. Sacrificial Fragments (4✩)",
+                            "≈ Favonius Codex (4✩)*",
+                            "≈ Fruit of Fulfillment (4✩)",
+                            "5. Hakushin Ring (4✩)*",
+                            "≈ Wandering Evenstar (4✩)*",
+                            "≈ Magic Guide (3✩)",
+                        )
+                    ),
+                    "1. Viridescent Venerer (4)",
+                    "\n".join(
+                        (
+                            "Sands - Elemental Mastery / Energy Recharge",
+                            "Goblet - Elemental Mastery",
+                            "Circlet - Elemental Mastery",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Energy Recharge",
+                            "2. Elemental Mastery",
+                            "3. Crit Rate*",
+                            "",
+                            "*Prioritize Crit Rate while using Favonius Codex",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Skill",
+                            "2. Burst",
+                        )
+                    ),
+                    "",
+                ),
+            ],
+        )
 
 
 class Varka(TestCase):
@@ -1542,19 +2193,62 @@ class Varka(TestCase):
             ),
         )
 
-    # def test_get_character_builds(self):
-    #     self.assertListEqual(
-    #         get_character_builds(self.img),
-    #         [
-    #             CharacterBuild(
-    #                 "",
-    #                 True,
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #                 "\n".join(()),
-    #             ),
-    #         ],
-    #     )
+    def test_get_character_builds(self):
+        self.assertListEqual(
+            get_character_builds(self.img),
+            [
+                CharacterBuild(
+                    "DPS",
+                    True,
+                    "\n".join(
+                        (
+                            "1. Gest of the Mighty Wolf (5✩)",
+                            "2. Beacon of the Reed Sea (5✩)",
+                            "≈ A Thousand Blazing Suns (5✩)",
+                            "3. Redhorn Stonethresher (5✩)",
+                            "4. Verdict (5✩)",
+                            "5. Song of Broken Pines (5✩)*",
+                            "6. Serpent Spine (4✩)*",
+                            "≈ Wolf's Gravestone (5✩)",
+                            "7. Fang of the Mountain King (5✩)*",
+                            "≈ The Unforged (5✩)",
+                            "8. Tidal Shadow (4✩)*",
+                            "≈ Talking Stick (4✩)*",
+                            "≈ Blackcliff Slasher (4✩)",
+                            '9. "Ultimate Overlord\'s Mega Magic Sword" (4✩)* [R5]',
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. A Day Carved from Rising Winds (4)",
+                            "2. Shimenawa's Reminiscence (4)",
+                            "3. Desert Pavilion Chronicle (4)",
+                            "4. Gladiator's Finale (4)",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "Sands - ATK%",
+                            "Goblet - ATK%*",
+                            "Circlet - CRIT Rate / DMG",
+                            "",
+                            "*ATK% is the generalist pick for the goblet. In most teams, the respective Elemental goblet (Pyro/Hydro/Electro/Cryo) will perform slightly better.",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. CRIT Rate / DMG",
+                            "2. ATK%",
+                        )
+                    ),
+                    "\n".join(
+                        (
+                            "1. Skill",
+                            "",
+                            "Leveling Varka to Level 90 is the next best investment after Skill Talent levels.",
+                        )
+                    ),
+                    "Varka always wants a second Hex character, a second Anemo character and two characters of the same PHEC type (Pyro/Hydro/Electro/Cryo) on the team. Not fulfilling these conditions will make his damage plummet.",
+                ),
+            ],
+        )
