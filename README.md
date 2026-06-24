@@ -1,5 +1,11 @@
 # genshin-builds
 
+> [!CAUTION]
+>
+> This project has been discontinued as the Genshin Impact Helper Team's Build Sheet was migrated to a website with proper filtering and all the features I was going to implement here and more
+>
+> Link - <https://genshin-impact-helper-team.github.io/genshin-builds/>
+
 ## What this is
 
 This is a CLI that aims to scrape
